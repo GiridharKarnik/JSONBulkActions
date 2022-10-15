@@ -1,0 +1,27 @@
+.button-container {
+    border-radius: 100px;
+    background-color: #1890FF;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    border: none;
+    padding: 7px 16px;
+    cursor: pointer;
+    box-shadow: 0px 1px 8px -4px #151515;
+}
+
+.icon-container {
+    margin-right: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-text {
+    font-size: 14px;
+    color: #FFFFFF;
+    margin: 0;
+}

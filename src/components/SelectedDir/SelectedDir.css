@@ -1,0 +1,11 @@
+.selected-dir-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.selected-dir-path {
+    margin: 0;
+    font-size: 14px;
+    color: #FFFFFF;
+}
