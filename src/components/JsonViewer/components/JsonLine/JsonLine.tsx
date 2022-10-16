@@ -4,6 +4,7 @@ import { DeleteIcon, DragIcon } from '../../../Icons';
 import './JsonLine.css';
 
 interface JsonLineProps {
+  nestedAddress?: string;
   bracketOpen?: boolean;
   bracketKey?: string;
   keyValue?: {
@@ -14,7 +15,14 @@ interface JsonLineProps {
   nestedLevel?: number;
 }
 
-export const JsonLine: React.FC<JsonLineProps> = ({ bracketOpen, bracketKey, keyValue, bracketClose, nestedLevel }) => {
+export const JsonLine: React.FC<JsonLineProps> = ({
+  nestedAddress,
+  bracketOpen,
+  bracketKey,
+  keyValue,
+  bracketClose,
+  nestedLevel,
+}) => {
   const [hovering, setHovering] = React.useState(false);
 
   const onMouseEnter = () => {
@@ -23,6 +31,12 @@ export const JsonLine: React.FC<JsonLineProps> = ({ bracketOpen, bracketKey, key
 
   const onMouseLeave = () => {
     setHovering(false);
+  };
+
+  const deleteKey = () => {
+    const keyAddress = nestedAddress ? `${nestedAddress}.${keyValue?.key}` : keyValue?.key;
+
+    console.log(`key to delete: ${keyAddress}`);
   };
 
   return (
@@ -44,7 +58,9 @@ export const JsonLine: React.FC<JsonLineProps> = ({ bracketOpen, bracketKey, key
             },`}</span>
           </div>
 
-          <div className="delete-icon-container">{hovering && <DeleteIcon size="12px" color="#C24747" />}</div>
+          <div className="delete-icon-container" onClick={deleteKey}>
+            {hovering && <DeleteIcon size="12px" color="#C24747" />}
+          </div>
         </div>
       )}
 
