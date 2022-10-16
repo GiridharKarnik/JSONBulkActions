@@ -1,16 +1,18 @@
 import React, { createContext, Dispatch, useContext, useReducer } from 'react';
-import { DirectoryContents } from '../types';
+import { DirectoryContents, JSONObject } from '../types';
 
 export interface GlobalState {
   directoryPath?: string;
   directoryContents?: DirectoryContents;
   selectedJsonFile?: string;
+  selectedJsonFileContents?: JSONObject;
 }
 
 export enum GlobalStateActionTypes {
   SetDirectoryPath = 'SetDirectoryPath',
   SetDirectoryContents = 'SetDirectoryContents',
   SetSelectedJsonFilePath = 'SetSelectedJsonFilePath',
+  SetSelectedJsonFileContents = 'SetSelectedJsonFileContents',
 }
 
 export interface SetDirectoryPath {
@@ -24,22 +26,33 @@ export interface SetDirectoryContents {
   type: GlobalStateActionTypes.SetDirectoryContents;
   payload: {
     directoryContents: DirectoryContents;
-  }
+  };
 }
 
 export interface SetSelectedJsonFilePath {
   type: GlobalStateActionTypes.SetSelectedJsonFilePath;
   payload: {
     selectedJsonFile: string;
-  }
+  };
 }
 
-export type GlobalContextActions = SetDirectoryPath | SetDirectoryContents | SetSelectedJsonFilePath;
+export interface SetSelectedJsonFileContents {
+  type: GlobalStateActionTypes.SetSelectedJsonFileContents;
+  payload: {
+    selectedJsonFileContents: JSONObject;
+  };
+}
+
+export type GlobalContextActions =
+  | SetDirectoryPath
+  | SetDirectoryContents
+  | SetSelectedJsonFilePath
+  | SetSelectedJsonFileContents;
 
 export const defaultGlobalState: GlobalState = {
   directoryPath: undefined,
   directoryContents: undefined,
-  selectedJsonFile: undefined
+  selectedJsonFile: undefined,
 };
 
 export const GlobalContext = createContext<[GlobalState, Dispatch<GlobalContextActions>]>([
@@ -68,6 +81,13 @@ function globalStateReducer(state: GlobalState, action: GlobalContextActions): G
       return {
         ...state,
         selectedJsonFile: action.payload.selectedJsonFile,
+      };
+    }
+
+    case GlobalStateActionTypes.SetSelectedJsonFileContents: {
+      return {
+        ...state,
+        selectedJsonFileContents: action.payload.selectedJsonFileContents,
       };
     }
 

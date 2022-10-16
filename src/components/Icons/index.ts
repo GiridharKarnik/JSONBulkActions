@@ -11,6 +11,7 @@ export interface IconProps extends IconCSSProps {
   marginRight?: string;
 }
 
+export { DeleteIcon } from './DeleteIcon';
 export { DragIcon } from './DragIcon';
 export { FolderIcon } from './FolderIcon';
 export { JsonFileIcon } from './JsonFileIcon';

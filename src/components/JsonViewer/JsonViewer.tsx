@@ -9,6 +9,26 @@ interface JsonViewerProps {
   fileNameWithPath?: string;
 }
 
+const mockJson = {
+  common: {
+    na: 'N/A',
+    debut: 'Дебют',
+    vs: 'Vs',
+    win: 'Победа',
+    tie: 'Жребий',
+    round: 'RND {{number}}',
+    rank: 'Ранг {{number}}',
+    champion: 'C',
+    noContest: 'Не се Играе',
+    roundLong: 'Pунд {{number}}',
+  },
+  fightCardNavigation: {
+    mainCard: 'Основна карта',
+    prelims: 'Предварителни',
+    earlyPrelims: 'Ранни предв.',
+  },
+};
+
 export const JsonViewer: React.FC<JsonViewerProps> = ({ jsonFileContents, fileNameWithPath }) => {
   if (!jsonFileContents || !fileNameWithPath) {
     return <div className="json-viewer-container"></div>;

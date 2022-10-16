@@ -1,5 +1,5 @@
 import React from 'react';
-import { DragIcon } from '../../../Icons';
+import { DeleteIcon, DragIcon } from '../../../Icons';
 
 import './JsonLine.css';
 
@@ -15,8 +15,18 @@ interface JsonLineProps {
 }
 
 export const JsonLine: React.FC<JsonLineProps> = ({ bracketOpen, bracketKey, keyValue, bracketClose, nestedLevel }) => {
+  const [hovering, setHovering] = React.useState(false);
+
+  const onMouseEnter = () => {
+    setHovering(true);
+  };
+
+  const onMouseLeave = () => {
+    setHovering(false);
+  };
+
   return (
-    <div className="json-line-container">
+    <div className="json-line-container" onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
       <DragIcon size="15px" color={'#767676'} marginRight="15px" />
       {bracketOpen && (
         <div className="object-key-open-bracket" style={{ paddingLeft: nestedLevel ? nestedLevel * 20 : 0 }}>
@@ -27,10 +37,14 @@ export const JsonLine: React.FC<JsonLineProps> = ({ bracketOpen, bracketKey, key
 
       {keyValue && (
         <div className="key-value">
-          <span className="json-key">{`${keyValue.key}: `}</span>
-          <span className="json-value">{`${
-            typeof keyValue.value === 'string' ? `"${keyValue.value}"` : keyValue.value
-          },`}</span>
+          <div className="key-value-text-container">
+            <span className="json-key">{`${keyValue.key}: `}</span>
+            <span className="json-value">{`${
+              typeof keyValue.value === 'string' ? `"${keyValue.value}"` : keyValue.value
+            },`}</span>
+          </div>
+
+          <div className="delete-icon-container">{hovering && <DeleteIcon size="12px" color="#C24747" />}</div>
         </div>
       )}
 

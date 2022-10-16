@@ -11,6 +11,10 @@
     align-items: center;
 }
 
+.json-line-container:hover {
+    background-color: #090909;
+}
+
 .bracket-open {
     color: #949494;
     font-size: 14px;
@@ -36,6 +40,14 @@
 
 .key-value {
     padding-left: 20px;
+    flex: 1;
+
+    display: flex;
+    flex-direction: row;
+}
+
+.key-value-text-container {
+    flex: 1;
 
     display: flex;
     flex-direction: row;
@@ -52,4 +64,10 @@
 .json-value {
     color: #C8866E;
     font-size: 14px;
+}
+
+.delete-icon-container {
+    height: 100%;
+    align-self: center;
+    cursor: pointer;
 }
