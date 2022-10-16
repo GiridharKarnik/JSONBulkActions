@@ -14,8 +14,6 @@ export const Header: React.FC = () => {
   const chooseDirectory = async () => {
     const filePath = await (window as any).electronAPI.chooseDirectory();
 
-    console.log(`Chose directory path: ${filePath}`);
-
     if (filePath) {
       dispatch({
         type: GlobalStateActionTypes.SetDirectoryPath,

@@ -1,0 +1,55 @@
+.json-line-container {
+    margin: 3px 0;
+    padding: 7px 10px;
+
+    background-color: #1C1C1C;
+    border-radius: 3px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.bracket-open {
+    color: #949494;
+    font-size: 14px;
+}
+
+.bracket-close {
+    color: #949494;
+    font-size: 14px;
+}
+
+.object-key-open-bracket {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.object-key {
+    color: #8FD6FB;
+    font-size: 14px;
+    white-space: pre-wrap;
+}
+
+.key-value {
+    padding-left: 20px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.json-key {
+    color: #8FD6FB;
+    font-size: 14px;
+    white-space: pre-wrap;
+}
+
+.json-value {
+    color: #C8866E;
+    font-size: 14px;
+}

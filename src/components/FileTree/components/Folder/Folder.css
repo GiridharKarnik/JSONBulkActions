@@ -1,0 +1,18 @@
+.folder-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 28px;
+
+    cursor: pointer;
+}
+
+.folder-container:hover {
+    background-color: #676767;
+}
+
+.folder-name {
+    font-size: 14px;
+    color: #FFFFFF;
+    margin: 0;
+}

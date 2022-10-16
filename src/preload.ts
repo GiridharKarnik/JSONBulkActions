@@ -5,5 +5,6 @@ import { contextBridge, ipcRenderer } from "electron";
 
 contextBridge.exposeInMainWorld("electronAPI", {
   chooseDirectory: () => ipcRenderer.invoke("dialog:openFile"),
-  readDirectory: () => ipcRenderer.invoke("readDirectory"),
+  readDirectory: (directoryPath: string) => ipcRenderer.invoke("readDirectory", directoryPath),
+  readJsonFile: (filePath: string) => ipcRenderer.invoke("readJsonFile", filePath),
 });
